@@ -24,7 +24,7 @@
         $temp = $row['temperatura'];
         $umid = $row['umidade'];
 
-        $sql = "SELECT temperatura, umidade 
+        $sql = "SELECT temperatura, umidade, data_hora 
                 FROM dht_data
                 WHERE temperatura = (SELECT min(temperatura) as temperatura
                                      FROM dht_data
@@ -142,17 +142,21 @@
 </head>
 <style>
     body {
-     background-color: #ccc;   
+     background-image: url('./rain.jpg');
+     background-repeat: no-repeat;
+     background-size: cover;   
     }
 
     .container {
+        position: absolute;
+        top: 30%;  
+        left: 32%; 
         border-radius: 20px;
         padding: 20px;
         font-family: 'Verdana', sans-serif;
         width: 500px;
-        background-color: #fff;
-        margin: auto;
-        margin-top: 150px;
+        background-color: #ddd;
+        
         align-items: center;
         justify-content: center;
     }
@@ -183,10 +187,10 @@
             <?php echo $maiorTemp . " °C às " . $maiorDataHora; ?>
         </p>
         <p>⬇💧 Menor umidade:
-            <?php echo $menorUmidade . " °C às " . $menorUmidadeDataHora; ?>
+            <?php echo $menorUmidade . "% às " . $menorUmidadeDataHora; ?>
         </p>
         <p>⬆💧Maior umidade:
-            <?php echo $maiorUmidade . " °C às " . $maiorUmidadeDataHora; ?>
+            <?php echo $maiorUmidade . "% às " . $maiorUmidadeDataHora; ?>
         </p>
     </div>
 </body>
